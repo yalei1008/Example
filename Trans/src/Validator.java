@@ -2,15 +2,16 @@ import java.util.Scanner;
 
 public class Validator 
 {
-public static String getString
-	(Scanner sc, String prompt){
+public static String getString(Scanner sc, String prompt)
+	{
+	  
 		System.out.print(prompt);
 		String s=sc.next(); //read the user entry
 		sc.nextLine();     // discard any other data
 		return s;
 		}
 	
-public static double getInt(Scanner sc, String prompt)
+public static int getInt(Scanner sc, String prompt)
 {
 	int i=0;
 	boolean isValid=false;
@@ -32,25 +33,48 @@ public static double getInt(Scanner sc, String prompt)
 	return i;
 }
 
-public static double getInt(Scanner sc, String prompt, int min,int max){
+public static int getInt(Scanner sc, String prompt, int min,int max){
 	int i=0;
 	boolean isValid=false;
 	while (isValid==false){
-		i=(int) getInt (sc,prompt);
-		min=0;
-		max=4;
-		if (i<=min)
-			System.out.println("Error! Number must be greater than " + min+ ".");
-		else if(i>=max)
-			System.out.println("Error! Number must be less than "+max+".");		
+		i= getInt (sc,prompt);
+		if((i>max||(i<min)))
+				System.out.println("Error! Number must be less than "+max+".");
 		else
-			isValid=true;
+		isValid=true;
+	}
+		return i;
+	}
+public static double getDouble(Scanner sc,String prompt, double min,double max)
+{
+	double c=0;
+	boolean isValid=false;
+	while(isValid==false){
+		c=getDouble(sc,prompt);
+		if(((c>max||c<min)))
+			System.out.println("Error! Number must be less than"+max+".");
+		else isValid=true;
+		
+	}
+	return c;
 }
-	return i;
-}}
+public static double getDouble(Scanner sc, String prompt){
+	double c=0;
+	boolean isValid=false;
+	while(isValid==false){
+		System.out.print(prompt);
+		if(sc.hasNextDouble()){
+			c=sc.nextDouble();
+			isValid=true;}
+		else{
+			System.out.println("Error! Invalid decimal value. Try again.");
+		}
+sc.nextLine();}
+return c;}
+	
+	
 
-
-
+}
 
 
 
